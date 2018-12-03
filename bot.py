@@ -44,4 +44,3 @@ schedule.every().day.at("15:00").do(getRun)
 while True:
 	schedule.run_pending()
 	time.sleep(10)
-	print("Сплю")
