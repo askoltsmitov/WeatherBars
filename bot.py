@@ -18,7 +18,6 @@ fc = owm.daily_forecast('Angarsk,RU')
 times = timeutils.tomorrow(14)
 
 def getRun():
-	print("Test 1")
 	bot.run(os.getenv('TOKEN'))
 
 @bot.event
@@ -44,3 +43,4 @@ schedule.every().day.at("03:57").do(getRun)
 while True:
 	schedule.run_pending()
 	time.sleep(10)
+	print("Сплю")
