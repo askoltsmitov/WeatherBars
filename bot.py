@@ -28,6 +28,7 @@ async def on_ready():
 	start = str((w.get_temperature('celsius'))).find(" ")
 	end = str((w.get_temperature('celsius'))).find(",")
 	temp = str((w.get_temperature('celsius')))[start:end-1]
+	print(w)
 
 	if fc.will_be_rainy_at(times):
 		weather_cry = " , возможен :cloud_rain:"
@@ -37,7 +38,7 @@ async def on_ready():
 
 	channel = bot.get_channel(199459074243297280)
 	await channel.send("Температура на завтра: " + temp + " C" + weather_cry)
-	await logout()
+	await bot.close()
 
 schedule.every().day.at("15:00").do(getRun)
 
