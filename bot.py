@@ -36,6 +36,7 @@ async def on_ready():
 	eve_start = str((w.get_temperature('celsius'))).find("'eve'")
 	eve_end 	= str((w.get_temperature('celsius'))).find(", 'morn'")
 	eve_temp 	= str((w.get_temperature('celsius')))[eve_start+7:eve_end-1]
+	print(w)
 	
 	if fc.will_be_rainy_at(times):
 		weather_cry = "Возможен :cloud_rain:"
@@ -51,7 +52,7 @@ async def on_ready():
 	sent = await channel.send("Температура на завтра:\nУтром:     " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + "\n" + weather_cry)
 	await bot.close()
 
-schedule.every().day.at("16:41").do(getRun)
+schedule.every().day.at("16:48").do(getRun)
 
 while True:
 	schedule.run_pending()
