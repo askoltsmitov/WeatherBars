@@ -25,22 +25,30 @@ async def on_ready():
 	# Нахождение температуры
 	weather_cry = ""
 	w = fc.get_weather_at(times)
-	start = str((w.get_temperature('celsius'))).find(" ")
-	end = str((w.get_temperature('celsius'))).find(",")
-	temp = str((w.get_temperature('celsius')))[start:end-1]
-	print(w)
-
+	mor_start = str((w.get_temperature('celsius'))).find("'morn'")
+	mpr_end 	= str((w.get_temperature('celsius'))).find("}")
+	mor_temp 	= str((w.get_temperature('celsius')))[mor_start+8:mpr_end-1]
+	day_start = str((w.get_temperature('celsius'))).find("'day'")
+	day_end 	= str((w.get_temperature('celsius'))).find(", 'min'")
+	day_temp 	= str((w.get_temperature('celsius')))[day_start+7:day_end-1]
+	eve_start = str((w.get_temperature('celsius'))).find("'eve'")
+	eve_end 	= str((w.get_temperature('celsius'))).find(", 'morn'")
+	eve_temp 	= str((w.get_temperature('celsius')))[eve_start+7:eve_end-1]
+	
 	if fc.will_be_rainy_at(times):
-		weather_cry = " , возможен :cloud_rain:"
+		weather_cry = "Возможен :cloud_rain:"
 
 	if fc.will_be_snowy_at(times):
-		weather_cry = " , возможен :cloud_snow:"
+		weather_cry = "Возможен :cloud_snow:"
 
 	channel = bot.get_channel(199459074243297280)
-	await channel.send("Температура на завтра: " + temp + " C" + weather_cry)
+	await channel.send("Температура на завтра:\n
+											Утром:   хуй\n
+											Днём:    хуй\n
+											Вечером: хуй\n" + weather_cry)
 	await bot.close()
 
-schedule.every().day.at("15:00").do(getRun)
+schedule.every().day.at("15:13").do(getRun)
 
 while True:
 	schedule.run_pending()
