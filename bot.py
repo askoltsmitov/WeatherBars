@@ -42,10 +42,7 @@ async def on_ready():
 		weather_cry = "Возможен :cloud_snow:"
 
 	channel = bot.get_channel(199459074243297280)
-	await channel.send("Температура на завтра:\n
-											Утром:   хуй\n
-											Днём:    хуй\n
-											Вечером: хуй\n" + weather_cry)
+	await channel.send("Температура на завтра:\nУтром:   хуй\nДнём:    хуй\nВечером: хуй\n" + weather_cry)
 	await bot.close()
 
 schedule.every().day.at("15:13").do(getRun)
