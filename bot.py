@@ -45,7 +45,7 @@ async def on_ready():
 	await channel.send("Температура на завтра:\nУтром:   хуй\nДнём:    хуй\nВечером: хуй\n" + weather_cry)
 	await bot.close()
 
-schedule.every().day.at("15:19").do(getRun)
+schedule.every().day.at("15:22").do(getRun)
 
 while True:
 	schedule.run_pending()
