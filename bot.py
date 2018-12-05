@@ -45,13 +45,13 @@ async def on_ready():
 
 	channel = bot.get_channel(199459074243297280)
 	await sent.delete()
-	sent = await channel.send("Температура на завтра:\nУтром:   " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + "\n" + weather_cry)
 	try:
-		await bot.close()
+		sent = await channel.send("Температура на завтра:\nУтром:   " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + "\n" + weather_cry)
 	except AttributeError:
 		print("В 1-й раз")
+	await bot.close()
 
-schedule.every().day.at("16:34").do(getRun)
+schedule.every().day.at("16:37").do(getRun)
 
 while True:
 	schedule.run_pending()
