@@ -44,14 +44,14 @@ async def on_ready():
 		weather_cry = "Возможен :cloud_snow:"
 
 	channel = bot.get_channel(199459074243297280)
-	await sent.delete()
 	try:
-		sent = await channel.send("Температура на завтра:\nУтром:   " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + "\n" + weather_cry)
+		await sent.delete()
 	except AttributeError:
 		print("В 1-й раз")
-	await bot.close()
+	sent = await channel.send("Температура на завтра:\nУтром:   " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + "\n" + weather_cry)
+		await bot.close()
 
-schedule.every().day.at("16:37").do(getRun)
+schedule.every().day.at("16:41").do(getRun)
 
 while True:
 	schedule.run_pending()
