@@ -16,6 +16,7 @@ owm = pyowm.OWM('8638c55431d913688db69d830ed8d17b', language='ru')
 
 fc = owm.daily_forecast('Angarsk,RU')
 times = timeutils.tomorrow(14)
+sent = ""
 
 def getRun():
 	bot.run(os.getenv('TOKEN'))
@@ -23,6 +24,7 @@ def getRun():
 @bot.event
 async def on_ready():
 	# Нахождение температуры
+	global sent
 	weather_cry = ""
 	w = fc.get_weather_at(times)
 	mor_start = str((w.get_temperature('celsius'))).find("'morn'")
@@ -42,10 +44,11 @@ async def on_ready():
 		weather_cry = "Возможен :cloud_snow:"
 
 	channel = bot.get_channel(199459074243297280)
-	await channel.send("Температура на завтра:\nУтром:   хуй\nДнём:    хуй\nВечером: хуй\n" + weather_cry)
+	await sent.delete()
+	sent = await channel.send("Температура на завтра:\nУтром:   " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + "\n" + weather_cry)
 	await bot.close()
 
-schedule.every().day.at("16:24").do(getRun)
+schedule.every().day.at("16:31").do(getRun)
 
 while True:
 	schedule.run_pending()
