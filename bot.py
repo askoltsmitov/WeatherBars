@@ -50,7 +50,10 @@ async def on_ready():
 	except AttributeError:
 		print("В 1-й раз")
 	sent = await channel.send("Температура на завтра:\nУтром:     " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + weather_cry)
-	await bot.close()
+	try:
+		await bot.close()
+	except RuntimeError:
+		print("Потом разберёмся.")
 
 schedule.every().day.at("15:00").do(getRun)
 
