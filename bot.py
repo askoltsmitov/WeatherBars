@@ -49,7 +49,7 @@ async def on_ready():
 		await sent.delete()
 	except AttributeError:
 		print("В 1-й раз")
-	sent = await channel.send("Температура на завтра:\nУтром:     " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + weather_cry)
+	sent = await channel.send(w + "\nТемпература на завтра:\nУтром:     " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + weather_cry)
 	try:
 		await bot.close()
 	except RuntimeError:
