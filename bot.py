@@ -36,7 +36,6 @@ async def on_ready():
 	eve_start = str((w.get_temperature('celsius'))).find("'eve'")
 	eve_end 	= str((w.get_temperature('celsius'))).find(", 'morn'")
 	eve_temp 	= str((w.get_temperature('celsius')))[eve_start+7:eve_end-1]
-	print(w)
 	
 	if fc.will_be_rainy_at(times):
 		weather_cry = "\nВозможен :cloud_rain:"
@@ -49,11 +48,13 @@ async def on_ready():
 		await sent.delete()
 	except AttributeError:
 		print("В 1-й раз")
-	sent = await channel.send(w + "\nТемпература на завтра:\nУтром:     " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + weather_cry)
+	sent = await channel.send(str(w) + "\nТемпература на завтра:\nУтром:     " + mor_temp + "\nДнём:       "+ day_temp + "\nВечером: " + eve_temp + weather_cry)
+	"""
 	try:
 		await bot.close()
 	except RuntimeError:
 		print("Потом разберёмся.")
+	"""
 
 schedule.every().day.at("15:00").do(getRun)
 
