@@ -56,7 +56,7 @@ async def on_ready():
 		print("Потом разберёмся.")
 	"""
 
-schedule.every().day.at("15:00").do(getRun)
+schedule.every().day.at("16:03").do(getRun)
 
 while True:
 	schedule.run_pending()
